@@ -26,6 +26,7 @@ public class TicketController {
         return response;
     }
 
+    //TODO Create ticket response and request models in the controller model package
     @GetMapping({"/api/tickets/{id}"})
     public Ticket getTicket(@PathVariable int id) {
         return new Ticket();
