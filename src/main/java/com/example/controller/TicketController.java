@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Ticketcontorller {
+public class TicketController {
     @Autowired
     private TicketService ticketService;
 
