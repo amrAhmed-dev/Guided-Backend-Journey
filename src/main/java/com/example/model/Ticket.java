@@ -1,9 +1,4 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
-package com.example.bus_ticket_api.model;
+package com.example.model;
 
 public class Ticket {
     private int id;
@@ -18,6 +13,9 @@ public class Ticket {
         this.arrivalLocation = arrivalLocation;
         this.departureLocation = departureLocation;
         this.price = price;
+    }
+    public Ticket(){
+
     }
 
     public int getId() {
