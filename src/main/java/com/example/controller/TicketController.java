@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -33,8 +35,8 @@ public class TicketController {
     }
 
     @PostMapping({"/api/tickets"})
-    public void addTicket(@RequestBody Ticket newticket) {
-
+    public ResponseEntity<Void> addTicket(@RequestBody Ticket newticket) {
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping({"/api/tickets/{id}"})
