@@ -1,24 +1,27 @@
 package com.example.model;
 
+
+
 import java.util.concurrent.ThreadLocalRandom;
+// Data Entity [Internal layer]
 
 public class Ticket {
-    private static final String[] NAMES = {
-        "Ahmed Sabry", "Mona Adel", "Youssef Hassan", "Salma Ibrahim",
-        "Omar Khaled", "Nour Mahmoud", "Kareem Fouad", "Habiba Tarek"
-    };
+//    private static final String[] NAMES = {
+//        "Ahmed Sabry", "Mona Adel", "Youssef Hassan", "Salma Ibrahim",
+//        "Omar Khaled", "Nour Mahmoud", "Kareem Fouad", "Habiba Tarek"
+//    };
     private static final String[] LOCATIONS = {
         "Cairo", "Alexandria", "Giza", "Luxor", "Aswan", "Hurghada", "Port Said", "Sharm El Sheikh"
     };
 
     private int id;
-    private String category;
+    private TicketCategory category;
     private String arrivalLocation;
     private String departureLocation;
     private double price;
     private boolean active;
 
-    public Ticket(int id, String category, String arrivalLocation, String departureLocation, double price) {
+    public Ticket(int id, TicketCategory category, String arrivalLocation, String departureLocation, double price) {
         this.id = id;
         this.category = category;
         this.arrivalLocation = arrivalLocation;
@@ -31,7 +34,11 @@ public class Ticket {
         int departureIndex = (arrivalIndex + 1 + random.nextInt(LOCATIONS.length - 1)) % LOCATIONS.length;
 
         this.id = random.nextInt(1, 1001);
-        this.category = NAMES[random.nextInt(NAMES.length)];
+//        this.category = NAMES[random.nextInt(NAMES.length)];
+
+        // change the enum to simple array for random
+        TicketCategory[] categories = TicketCategory.values();
+        this.category = categories[random.nextInt()];
         this.arrivalLocation = LOCATIONS[arrivalIndex];
         this.departureLocation = LOCATIONS[departureIndex];
         this.price = Math.round(random.nextDouble(50.0, 500.0) * 100.0) / 100.0;
@@ -41,7 +48,7 @@ public class Ticket {
         return this.id;
     }
 
-    public String getCategory() {
+    public TicketCategory getCategory() {
         return this.category;
     }
 

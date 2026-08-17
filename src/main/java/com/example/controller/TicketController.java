@@ -2,8 +2,6 @@ package com.example.controller;
 
 import com.example.model.Ticket;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -17,29 +15,22 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController("/api/tickets")
 public class TicketController {
 
-    @GetMapping({"/api/tickets"})
-    public List<Ticket> getTickets() {
-        Ticket t = new Ticket();
-        List<Ticket> response = new ArrayList<>();
-        response.add(t);
-        return response;
-    }
 
     //TODO Create ticket response and request models in the controller model package
-    @GetMapping({"/api/tickets/{id}"})
-    public Ticket getTicket(@PathVariable int id) {
-        return new Ticket();
+    @GetMapping({"/{$username}"})
+    public ResponseEntity<?> getPassenger(@PathVariable String username) {
+
     }
 
-    @PostMapping({"/api/tickets"})
+    @PostMapping("user/{user}/")
     public ResponseEntity<Void> addTicket(@RequestBody Ticket newticket) {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PutMapping({"/api/tickets/{id}"})
+    @PutMapping({"{id}"})
     public void updateTicket(@PathVariable int id, @RequestBody Ticket updateticket) {
 
     }
