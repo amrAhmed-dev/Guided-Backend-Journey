@@ -1,46 +1,60 @@
 package com.example.controller;
 
+import com.example.datatransferpackage.PassengerData;
+import com.example.datatransferpackage.TicketRequest;
+import com.example.mapper.PassengerMapper;
+
+
+import com.example.mapper.TicketMapper;
 import com.example.model.Ticket;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController("/api/tickets")
+@RestController()
 public class TicketController {
 
-
     //TODO Create ticket response and request models in the controller model package
-    @GetMapping({"/{$username}"})
-    public ResponseEntity<?> getPassenger(@PathVariable String username) {
+    @GetMapping({"/api/tickets/{username}"})
+    public ResponseEntity<?> getPassenger(@PathVariable("username") String username) {
+        PassengerMapper mapper = new PassengerMapper();
+        if(mapper.checkName(username)){
+            PassengerData passenger = new PassengerData(username);
+            return  ResponseEntity.ok(passenger);
+
+        }
+        else {
+        return  ResponseEntity.badRequest().body("the username " +username +" is not valid");
+        }
+    }
+
+    @PostMapping("users/{user}/tickets/{newticket}")
+    public ResponseEntity<Void> addTicket(@RequestBody TicketRequest newticket , @PathVariable String user) {
+        PassengerMapper mapper = new PassengerMapper();
+        if(mapper.checkName(user)) {
+            TicketMapper mapping  =new TicketMapper();
+            mapping.convertToEntity(newticket);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
+        else{
+            return  ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping({"/api/users/{user}/tickets/{newticket}"})
+    public void updateTicket(@PathVariable PassengerData passanger, @RequestBody Ticket updateticket) {
+
 
     }
 
-    @PostMapping("user/{user}/")
-    public ResponseEntity<Void> addTicket(@RequestBody Ticket newticket) {
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-    @PutMapping({"{id}"})
-    public void updateTicket(@PathVariable int id, @RequestBody Ticket updateticket) {
-
-    }
-
-    @DeleteMapping({"/api/tickets/{id}"})
+    @DeleteMapping({"/api/tickets/{newticket}"})
     public void deleteTicket(@PathVariable int id) {
 
     }
 
-    @PatchMapping({"/api/tickets/{id}"})
+    @PatchMapping({"/api/tickets/{newticket}"})
     public void destinationUpdate(@PathVariable int id, @RequestBody Map<String, String> newDistination) {
 
     }
