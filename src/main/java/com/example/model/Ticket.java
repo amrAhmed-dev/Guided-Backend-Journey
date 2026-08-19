@@ -38,7 +38,7 @@ public class Ticket {
 
         // change the enum to simple array for random
         TicketCategory[] categories = TicketCategory.values();
-        this.category = categories[random.nextInt()];
+        this.category = categories[random.nextInt(categories.length)];
         this.arrivalLocation = LOCATIONS[arrivalIndex];
         this.departureLocation = LOCATIONS[departureIndex];
         this.price = Math.round(random.nextDouble(50.0, 500.0) * 100.0) / 100.0;
@@ -62,6 +62,14 @@ public class Ticket {
 
     public double getPrice() {
         return this.price;
+    }
+
+    public void setCategory(TicketCategory category) {
+        this.category = category;
+    }
+
+    public void setArrivalLocation(String arrivalLocation) {
+        this.arrivalLocation = arrivalLocation;
     }
 
     public void setDepartureLocation(String departureLocation) {
