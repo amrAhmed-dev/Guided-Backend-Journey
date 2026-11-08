@@ -1,4 +1,4 @@
-package com.example.datatransferpackage;
+package com.example.dto;
 
 public class PassengerData {
     private String username;

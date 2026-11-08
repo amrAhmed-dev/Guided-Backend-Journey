@@ -1,6 +1,5 @@
-package com.example.model;
+package com.example.entity;
 
-import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
@@ -11,13 +10,13 @@ public class Passenger {
             "Ahmed Sabry", "Mona Adel", "Youssef Hassan", "Salma Ibrahim",
             "Omar Khaled", "Nour Mahmoud", "Kareem Fouad", "Habiba Tarek"
     };
-    private static final Ticket[] TICKETS = Stream.generate(Ticket::new).limit(5).toArray(Ticket[]::new);
+    private static final Fair[] TICKETS = Stream.generate(Fair::new).limit(5).toArray(Fair[]::new);
 
     private String username;
-    private Ticket Passengerticket;
+    private Fair Passengerticket;
     private String Passwrod;// Senstive and interal data only used to store in simple sql table
 
-    public Passenger(String username, Ticket passengerticket, String passwrod) {
+    public Passenger(String username, Fair passengerticket, String passwrod) {
         this.username = username;
         Passengerticket = passengerticket;
         Passwrod = passwrod;
@@ -42,7 +41,7 @@ public class Passenger {
        return false;
        }
 
-    public void setPassengerticket(Ticket passengerticket) {
+    public void setPassengerticket(Fair passengerticket) {
         Passengerticket = passengerticket;
     }
 }

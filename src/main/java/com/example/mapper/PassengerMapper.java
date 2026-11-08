@@ -1,7 +1,7 @@
 package com.example.mapper;
 
-import com.example.datatransferpackage.PassengerData;
-import com.example.model.Passenger;
+import com.example.dto.PassengerData;
+import com.example.entity.Passenger;
 
 public class PassengerMapper {
    public PassengerData toDTO(Passenger passenger){
