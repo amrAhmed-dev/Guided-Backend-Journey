@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class FareService {
     public Fare getFares(int id){
         if(FareDataBase.database.stream().anyMatch(t-> t.getId() == id)){
-            return FareDataBase.database.stream().filter(t-> t.getId() == id).findFirst().orElseThrow(() -> new RuntimeException("Fare not found in DB"));
+            return FareDataBase.database.stream().filter(t-> t.getId() == id).findFirst().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Fare not found with ID: "));
         }
         else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Fare not found with ID: ");
