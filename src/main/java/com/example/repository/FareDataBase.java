@@ -1,13 +1,13 @@
 package com.example.repository;
 
-import com.example.entity.Fair;
+import com.example.entity.Fare;
 import com.example.entity.TicketCategory;
 
 import java.util.List;
 
-public class FairDataBase {
-    public static final List<Fair> database = List.of(
-            new Fair(
+public class FareDataBase {
+    public static final List<Fare> database = List.of(
+            new Fare(
                     101,
                     TicketCategory.STANDARD,
                     12,
@@ -15,7 +15,7 @@ public class FairDataBase {
                     24.50,
                     true
             ),
-            new Fair(
+            new Fare(
                     102,
                     TicketCategory.ECONOMY,
                     5,
@@ -23,7 +23,7 @@ public class FairDataBase {
                     120.00,
                     true
             ),
-            new Fair(
+            new Fare(
                     103,
                     TicketCategory.ECONOMY,
                     67,
@@ -31,7 +31,7 @@ public class FairDataBase {
                     15.75,
                     false
            ),
-            new Fair(
+            new Fare(
                     104,
                     TicketCategory.ECONOMY,
                     34,
@@ -39,7 +39,7 @@ public class FairDataBase {
                     85.50,
                     true
            ),
-            new Fair(
+            new Fare(
                     105,
                     TicketCategory.STANDARD,
                     91,

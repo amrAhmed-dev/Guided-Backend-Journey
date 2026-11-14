@@ -2,6 +2,8 @@ package com.example.model;
 
 
 
+import com.example.entity.TicketCategory;
+
 import java.util.concurrent.ThreadLocalRandom;
 // Data Entity [Internal layer]
 

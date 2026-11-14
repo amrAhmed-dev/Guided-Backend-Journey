@@ -1,31 +1,31 @@
 package com.example.controller;
 
-import com.example.controller.model.FairResponse;
-import com.example.mapper.FairMapper;
-import com.example.service.FairService;
+import com.example.controller.model.FareResponse;
+import com.example.mapper.FareMapper;
+import com.example.service.FareService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FairContainer {
-    private FairService fairservice ;
+    private FareService fairservice ;
 
-    public FairContainer(FairService fairservice) {
+    public FairContainer(FareService fairservice) {
         this.fairservice = fairservice;
     }
 
     @GetMapping("/api/admin/fares/{id}")
-    public FairResponse getFares(@PathVariable int id){
-        return FairMapper.dtoToFairResponse(fairservice.getFairs(id));
+    public FareResponse getFares(@PathVariable int id){
+        return FareMapper.dtoToFareResponse(fairservice.getFares(id));
     }
 
     @PostMapping("/api/admin/fares")
-    public void createFare(@RequestBody FairResponse response){
-        fairservice.createFair(FairMapper.fiarresponseToDto(response));
+    public void createFare(@RequestBody FareResponse response){
+        fairservice.createFare(FareMapper.fareResponseToDto(response));
     }
 
     @PutMapping("/api/admin/{id}")
-    public void updateFare(@RequestBody FairResponse response,@PathVariable int id){
-       fairservice.updateFair(FairMapper.fiarresponseToDto(response), id);
+    public void updateFare(@RequestBody FareResponse response, @PathVariable int id){
+       fairservice.updateFair(FareMapper.fareResponseToDto(response), id);
     }
 
     @DeleteMapping("/api/admin/{id}")

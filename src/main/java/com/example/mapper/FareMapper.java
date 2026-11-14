@@ -1,14 +1,14 @@
 package com.example.mapper;
 
-import com.example.controller.model.FairResponse;
-import com.example.entity.Fair;
+import com.example.controller.model.FareResponse;
+import com.example.entity.Fare;
 
 import java.time.LocalDateTime;
 
-public class FairMapper {
+public class FareMapper {
 
-    static public Fair fiarresponseToDto(FairResponse response){
-        return new Fair(
+    static public Fare fareResponseToDto(FareResponse response){
+        return new Fare(
                 response.getId(),
                 response.getCategory(),
                 response.getOrignStation(),
@@ -17,8 +17,8 @@ public class FairMapper {
                 true
         );
     }
-    static public FairResponse dtoToFairResponse(Fair dto){
-        return new FairResponse(
+    static public FareResponse dtoToFareResponse(Fare dto){
+        return new FareResponse(
                 dto.getId(),
                 dto.getPrice(),
                 dto.getDepartureStation(),

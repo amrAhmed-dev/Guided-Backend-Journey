@@ -10,22 +10,22 @@ public class Passenger {
             "Ahmed Sabry", "Mona Adel", "Youssef Hassan", "Salma Ibrahim",
             "Omar Khaled", "Nour Mahmoud", "Kareem Fouad", "Habiba Tarek"
     };
-    private static final Fair[] TICKETS = Stream.generate(() -> {
+    private static final Fare[] TICKETS = Stream.generate(() -> {
         ThreadLocalRandom rand = ThreadLocalRandom.current();
-        return new Fair(
+        return new Fare(
                 rand.nextInt(1000, 9999), // Randomized id
                 null,                     // TicketCategory (Replace null with a valid enum like TicketCategory.STANDARD if available)
                 rand.nextInt(1, 10),      // Random arrivalStation
                 rand.nextInt(1, 10),      // Random departureStation
                 rand.nextDouble(10.0, 150.0), // Random price
                 true                      // active status
-        );}).limit(5).toArray(Fair[]::new);
+        );}).limit(5).toArray(Fare[]::new);
 
     private String username;
-    private Fair Passengerticket;
+    private Fare Passengerticket;
     private String Passwrod;// Senstive and interal data only used to store in simple sql table
 
-    public Passenger(String username, Fair passengerticket, String passwrod) {
+    public Passenger(String username, Fare passengerticket, String passwrod) {
         this.username = username;
         Passengerticket = passengerticket;
         Passwrod = passwrod;
@@ -50,7 +50,7 @@ public class Passenger {
        return false;
        }
 
-    public void setPassengerticket(Fair passengerticket) {
+    public void setPassengerticket(Fare passengerticket) {
         Passengerticket = passengerticket;
     }
 }

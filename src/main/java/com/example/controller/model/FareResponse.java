@@ -4,7 +4,7 @@ import com.example.entity.TicketCategory;
 
 import java.time.LocalDateTime;
 
-public class FairResponse {
+public class FareResponse {
     private int id;
     private double price;
     private int orignStation;
@@ -13,7 +13,7 @@ public class FairResponse {
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
 
-    public FairResponse(int id, double price, int orignStation, int destionationStation, TicketCategory category, LocalDateTime createAt, LocalDateTime updateAt) {
+    public FareResponse(int id, double price, int orignStation, int destionationStation, TicketCategory category, LocalDateTime createAt, LocalDateTime updateAt) {
         this.id = id;
         this.price = price;
         this.orignStation = orignStation;

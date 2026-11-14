@@ -1,6 +1,7 @@
 package com.example.datatransferpackage;
 
-import com.example.model.TicketCategory;
+
+import com.example.entity.TicketCategory;
 
 public class TicketRequest {
 

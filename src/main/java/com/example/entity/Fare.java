@@ -5,7 +5,7 @@ package com.example.entity;
 import java.time.LocalDateTime;
 
 
-public class Fair {
+public class Fare {
     private int id;
     private TicketCategory category;
     private int arrivalStation;
@@ -15,7 +15,7 @@ public class Fair {
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
 
-    public Fair(int id, TicketCategory category, int arrivalStation, int departureStation, double price, boolean active) {
+    public Fare(int id, TicketCategory category, int arrivalStation, int departureStation, double price, boolean active) {
         this.id = id;
         this.category = category;
         this.arrivalStation = arrivalStation;
