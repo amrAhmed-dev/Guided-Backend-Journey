@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f5f5f5;
+    }
+
+    .login-form {
+      width: 280px;
+      padding: 24px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .login-form label {
+      display: block;
+      margin: 12px 0 6px;
+    }
+
+    .login-form input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+
+    .login-form button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 10px;
+      color: white;
+      background: black;
+      border: 1px solid black;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #error-message {
+      color: #df2121;
+      font-size: 13px;
+      margin-top: 12px;
+      display: none;
+      word-break: break-word;
+      background: #fff0f0;
+      padding: 8px;
+      border-radius: 4px;
+      border-left: 3px solid #df2121;
+    }
+
+    #success-message {
+      color: #1e7e34;
+      font-size: 13px;
+      margin-top: 12px;
+      display: none;
+      background: #effaf1;
+      padding: 8px;
+      border-radius: 4px;
+      border-left: 3px solid #1e7e34;
+    }
+  </style>
+</head>
+<body>
+
+<form class="login-form" id="loginForm">
+  <h2>Login</h2>
+
+  <label for="username">Email Address</label>
+  <input type="email" id="username" name="username" required>
+
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" required>
+
+  <button type="submit">Login</button>
+
+  <div id="error-message"></div>
+  <div id="success-message"></div>
+</form>
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const errorDiv = document.getElementById('error-message');
+    const successDiv = document.getElementById('success-message');
+
+    errorDiv.style.display = "none";
+    successDiv.style.display = "none";
+
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.log("HTTP Status:", response.status);
+        console.log("Server Response:", data);
+
+        errorDiv.innerText = data.error || data.message || `Error ${response.status}: Login failed.`;
+        errorDiv.style.display = "block";
+
+      } else {
+        successDiv.innerText = data.message;
+        successDiv.style.display = "block";
+      }
+    } catch (err) {
+      errorDiv.innerText = "Cannot reach Spring Boot server.";
+      errorDiv.style.display = "block";
+    }
+  });
+</script>
+</body>
+</html>
