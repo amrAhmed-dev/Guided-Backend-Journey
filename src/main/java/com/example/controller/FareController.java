@@ -7,29 +7,29 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FareController {
-    private FareService fareservice;
+    private final FareService fareService;
 
-    public FareController(FareService fareservice) {
-        this.fareservice = fareservice;
+    public FareController(FareService fareService) {
+        this.fareService = fareService;
     }
 
     @GetMapping("/api/admin/fares/{id}")
     public FareResponse getFares(@PathVariable int id){
-        return FareMapper.dtoToFareResponse(fareservice.getFares(id));
+        return FareMapper.dtoToFareResponse(fareService.getFares(id));
     }
 
     @PostMapping("/api/admin/fares")
     public void createFare(@RequestBody FareResponse response){
-        fareservice.createFare(FareMapper.fareResponseToDto(response));
+        fareService.createFare(FareMapper.fareResponseToDto(response));
     }
 
     @PutMapping("/api/admin/{id}")
     public void updateFare(@RequestBody FareResponse response, @PathVariable int id){
-       fareservice.updateFair(FareMapper.fareResponseToDto(response), id);
+       fareService.updateFair(FareMapper.fareResponseToDto(response), id);
     }
 
     @DeleteMapping("/api/admin/{id}")
     public void deleteFare(@PathVariable int id){
-        fareservice.deleteFare(id);
+        fareService.deleteFare(id);
     }
 }
