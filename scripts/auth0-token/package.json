@@ -1,0 +1,7 @@
+{
+  "name": "auth0-token",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node get-token.mjs" },
+  "dependencies": { "auth0": "^4.37.2" }
+}

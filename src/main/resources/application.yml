@@ -1,0 +1,11 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: BustTicketApi
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-184eafy1yj1tjocf.us.auth0.com/
+          audiences: http://localhost:8080

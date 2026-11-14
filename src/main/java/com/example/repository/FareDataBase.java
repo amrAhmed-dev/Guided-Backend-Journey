@@ -10,7 +10,7 @@ import java.util.List;
 public class FareDataBase {
     public static  List<Fare> database = new ArrayList<>();
             static {
-                Collections.addAll(new ArrayList<>(),
+                Collections.addAll(database,
                         new Fare(
                                 101,
                                 TicketCategory.STANDARD,
