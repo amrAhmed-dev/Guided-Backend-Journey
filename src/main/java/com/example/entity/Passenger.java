@@ -10,7 +10,16 @@ public class Passenger {
             "Ahmed Sabry", "Mona Adel", "Youssef Hassan", "Salma Ibrahim",
             "Omar Khaled", "Nour Mahmoud", "Kareem Fouad", "Habiba Tarek"
     };
-    private static final Fair[] TICKETS = Stream.generate(Fair::new).limit(5).toArray(Fair[]::new);
+    private static final Fair[] TICKETS = Stream.generate(() -> {
+        ThreadLocalRandom rand = ThreadLocalRandom.current();
+        return new Fair(
+                rand.nextInt(1000, 9999), // Randomized id
+                null,                     // TicketCategory (Replace null with a valid enum like TicketCategory.STANDARD if available)
+                rand.nextInt(1, 10),      // Random arrivalStation
+                rand.nextInt(1, 10),      // Random departureStation
+                rand.nextDouble(10.0, 150.0), // Random price
+                true                      // active status
+        );}).limit(5).toArray(Fair[]::new);
 
     private String username;
     private Fair Passengerticket;
